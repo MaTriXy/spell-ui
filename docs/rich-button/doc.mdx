@@ -1,5 +1,6 @@
 import { Demo } from './demo'
 import { Demo as DemoColored } from './demo-colored'
+import { Demo as DemoSizes } from './demo-sizes'
 
 <DemoCanvas>
   <DemoPreview>
@@ -32,6 +33,18 @@ import { Demo as DemoColored } from './demo-colored'
   </DemoCode>
 </DemoCanvas>
 
+### Size
+
+<DemoCanvas>
+  <DemoPreview>
+    <DemoSizes />
+  </DemoPreview>
+  <DemoCode>
+    ```tsx file=./demo-sizes.tsx
+    ```
+  </DemoCode>
+</DemoCanvas>
+
 ## Usage
 
 ```tsx
@@ -60,7 +73,7 @@ import { RichButton } from "@/components/rich-button";
         name: "size",
         type: "SizeVariant",
         default: "default",
-        typeDetails: "Button size. Options: sm, default, lg"
+        nameDetails: "The size of the button"
       },
       {
         name: "className",
