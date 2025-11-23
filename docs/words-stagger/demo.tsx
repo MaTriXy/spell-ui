@@ -1,4 +1,4 @@
-import { WordsStagger } from "@/components/words-stagger";
+import { WordsStagger } from "@/registry/spell-ui/words-stagger";
 
 export function Demo() {
   return (

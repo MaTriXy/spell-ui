@@ -25,6 +25,7 @@ export function Demo() {
           split="lines"
           stagger={0.2}
           className="text-xl font-medium"
+          inView
         >
           {"First line\nSecond line\nThird line"}
         </SlideUpText>

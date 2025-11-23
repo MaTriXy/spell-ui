@@ -5,15 +5,15 @@ export function Demo() {
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-4">
         <span className="text-sm text-muted-foreground w-20 font-mono">FAST:</span>
-        <SpecialText speed={10} className="text-lg">FAST ANIMATION</SpecialText>
+        <SpecialText speed={10} className="text-lg" inView>FAST ANIMATION</SpecialText>
       </div>
       <div className="flex items-center gap-4">
         <span className="text-sm text-muted-foreground w-20 font-mono">NORMAL:</span>
-        <SpecialText speed={20} className="text-lg">NORMAL SPEED</SpecialText>
+        <SpecialText speed={20} className="text-lg" inView>NORMAL SPEED</SpecialText>
       </div>
       <div className="flex items-center gap-4">
         <span className="text-sm text-muted-foreground w-20 font-mono">SLOW:</span>
-        <SpecialText speed={40} className="text-lg">SLOW MOTION</SpecialText>
+        <SpecialText speed={40} className="text-lg" inView>SLOW MOTION</SpecialText>
       </div>
     </div>
   );
