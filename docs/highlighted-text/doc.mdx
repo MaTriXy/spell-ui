@@ -1,5 +1,5 @@
 import { Demo } from './demo'
-import { Demo as DemoColors } from './demo-colors'
+import { Demo as DemoDirection } from './demo-direction'
 
 <DemoCanvas>
   <DemoPreview>
@@ -20,14 +20,14 @@ import { Demo as DemoColors } from './demo-colors'
 
 ## Examples
 
-### Color
+### Direction
 
 <DemoCanvas>
   <DemoPreview>
-    <DemoColors />
+    <DemoDirection />
   </DemoPreview>
   <DemoCode>
-    ```tsx file=./demo-colors.tsx
+    ```tsx file=./demo-direction.tsx
     ```
   </DemoCode>
 </DemoCanvas>
@@ -37,8 +37,11 @@ import { Demo as DemoColors } from './demo-colors'
 ```tsx
 import { HighlightedText } from "@/components/highlighted-text";
 ```
+
 ```tsx
-<HighlightedText>Shimmer Effect</HighlightedText>
+<HighlightedText>
+  Your text here
+</HighlightedText>
 ```
 
 ## Props
@@ -48,30 +51,31 @@ import { HighlightedText } from "@/components/highlighted-text";
     {
       name: "children",
       type: "React.ReactNode",
-      nameDetails: "Text content to display with shimmer effect"
+      required: true,
+      nameDetails: "The text content to highlight"
     },
     {
-      name: "className",
-      type: "string",
-      nameDetails: "Additional CSS classes"
-    },
-    {
-      name: "variant",
-      type: "Variant",
-      default: "default",
-      typeDetails: "Text variant. Options: default, secondary, destructive, red, blue, green, yellow, purple, pink, orange, cyan, indigo, violet, rose, amber, lime, emerald, sky, slate, fuchsia"
-    },
-    {
-      name: "duration",
-      type: "number",
-      default: "1.5",
-      nameDetails: "Duration of the shimmer animation in seconds"
+      name: "from",
+      type: "'left' | 'right' | 'top' | 'bottom'",
+      default: "'bottom'",
+      nameDetails: "Direction from which the background slides in"
     },
     {
       name: "delay",
       type: "number",
-      default: "1.5",
-      nameDetails: "Delay before animation starts in seconds"
+      default: "0",
+      nameDetails: "Animation delay in seconds"
+    },
+    {
+      name: "inView",
+      type: "boolean",
+      default: "false",
+      nameDetails: "Whether to trigger animation only when element is in viewport"
+    },
+    {
+      name: "className",
+      type: "string",
+      nameDetails: "Additional CSS classes to apply"
     }
   ]}
 />

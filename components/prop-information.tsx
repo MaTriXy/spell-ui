@@ -23,7 +23,7 @@ export function PropInformation({ content }: PropInformationProps) {
       </PopoverTrigger>
       <PopoverContent
         side="top"
-        className="inline-block max-w-96 py-1.5 px-3 text-sm leading-[18px] text-muted-foreground items-center"
+        className="w-auto max-w-96 py-1.5 px-3 text-sm leading-[18px] text-muted-foreground"
       >
         {content}
       </PopoverContent>
