@@ -1,12 +1,17 @@
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/config";
 
 export function OpenInV0Button({ id }: { id: string }) {
-  const url = `https://spell.sh/r/${id}.json`;
+  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : siteConfig.url;
+  const url = `${baseUrl}/r/${id}.json`;
 
   return (
     <Button
       aria-label="Open in v0"
-      className="h-7 gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black"
+      variant={"outline"}
+      className="h-7 gap-1 rounded-[6px] px-3 text-xs dark:bg-background bg-background"
       asChild
     >
       <a

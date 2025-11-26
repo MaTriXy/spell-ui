@@ -2,11 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RefreshCcw } from "lucide-react";
 import React from "react";
 import { Suspense } from "react";
 import { Spinner } from "@/registry/spell-ui/spinner";
 import RefreshAnticlockwise from "./icons/refresh";
+import { OpenInV0Button } from "./open-in-v0-button";
+import { usePathname } from "next/navigation";
 
 export function DemoCanvas({
   children,
@@ -17,6 +18,8 @@ export function DemoCanvas({
 }) {
   const [key, setKey] = React.useState(0);
   const [isRotating, setIsRotating] = React.useState(false);
+  const pathname = usePathname();
+  const v0Id = pathname?.split("/docs/")[1] || "";
 
   const handleRefresh = () => {
     setIsRotating(true);
@@ -41,18 +44,21 @@ export function DemoCanvas({
             Code
           </TabsTrigger>
         </TabsList>
-        <button
-          onClick={handleRefresh}
-          className="cursor-pointer p-1.5 hover:bg-muted rounded-md"
-          title="Refresh component"
-        >
-          <RefreshAnticlockwise
-            className={cn(
-              "h-4 w-4 transition-transform duration-500",
-              isRotating && "rotate-180",
-            )}
-          />
-        </button>
+        <div className="flex items-center gap-1">
+          {v0Id && <OpenInV0Button id={v0Id} />}
+          <button
+            onClick={handleRefresh}
+            className="cursor-pointer p-1.5 hover:bg-muted rounded-md"
+            title="Refresh component"
+          >
+            <RefreshAnticlockwise
+              className={cn(
+                "h-4 w-4 transition-transform duration-500",
+                isRotating && "rotate-180",
+              )}
+            />
+          </button>
+        </div>
       </div>
       <div key={key}>
         {children}

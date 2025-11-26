@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { SidebarTrigger } from "./ui/sidebar";
+import { GithubStars } from "./github-stars";
 
 export default function SiteHeader({ docSchema }: { docSchema?: DocSchema }) {
   const { theme, setTheme } = useTheme();
@@ -17,14 +18,15 @@ export default function SiteHeader({ docSchema }: { docSchema?: DocSchema }) {
           <h1 className="font-medium" translate="no">Spell UI</h1>
         </div>
         <div className="flex gap-2 lg:gap-3">
-          <Button
+          {/* <Button
             variant="outline"
             className="h-8 px-3 cursor-pointer dark:bg-background dark:hover:bg-input/20 shadow-none"
           >
             <SiGithub />
             12k
             <span className="sr-only">Open Github</span>
-          </Button>
+          </Button> */}
+          <GithubStars />
           {docSchema && <SearchForm docSchema={docSchema} />}
           <Button
             variant="outline"

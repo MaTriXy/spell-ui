@@ -1,20 +1,20 @@
-"use client";
-import { AnimatePresence, motion } from "motion/react";
-import React from "react";
+"use client"
+import { AnimatePresence, motion } from "motion/react"
+import type React from "react"
 
 export interface BlurRevealProps {
-  children: string;
-  className?: string;
-  delay?: number;
-  speedReveal?: number;
-  speedSegment?: number;
-  trigger?: boolean;
-  onAnimationComplete?: () => void;
-  onAnimationStart?: () => void;
-  as?: keyof React.JSX.IntrinsicElements;
-  style?: React.CSSProperties;
-  inView?: boolean;
-  once?: boolean;
+  children: string
+  className?: string
+  delay?: number
+  speedReveal?: number
+  speedSegment?: number
+  trigger?: boolean
+  onAnimationComplete?: () => void
+  onAnimationStart?: () => void
+  as?: keyof React.JSX.IntrinsicElements
+  style?: React.CSSProperties
+  inView?: boolean
+  once?: boolean
 }
 
 export function BlurReveal({
@@ -31,10 +31,10 @@ export function BlurReveal({
   inView = false,
   once = true,
 }: BlurRevealProps) {
-  const MotionTag = motion[as as keyof typeof motion] as typeof motion.div;
+  const MotionTag = motion[as as keyof typeof motion] as typeof motion.div
 
-  const stagger = 0.03 / speedReveal;
-  const baseDuration = 0.3 / speedSegment;
+  const stagger = 0.03 / speedReveal
+  const baseDuration = 0.3 / speedSegment
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,7 +51,7 @@ export function BlurReveal({
         staggerDirection: -1,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, filter: "blur(12px)", y: 10 },
@@ -64,7 +64,7 @@ export function BlurReveal({
       },
     },
     exit: { opacity: 0, filter: "blur(12px)", y: 10 },
-  };
+  }
 
   return (
     <AnimatePresence mode="popLayout">
@@ -82,18 +82,19 @@ export function BlurReveal({
           style={style}
         >
           <span className="sr-only">{children}</span>
-          {children.split("").map((char, index) => (
-            <motion.span
-              key={`char-${index}`}
-              aria-hidden="true"
-              variants={itemVariants}
-              className="inline-block whitespace-pre"
-            >
-              {char}
-            </motion.span>
-          ))}
+          {children &&
+            children.split("").map((char, index) => (
+              <motion.span
+                key={`char-${index}`}
+                aria-hidden="true"
+                variants={itemVariants}
+                className="inline-block whitespace-pre"
+              >
+                {char}
+              </motion.span>
+            ))}
         </MotionTag>
       )}
     </AnimatePresence>
-  );
+  )
 }
