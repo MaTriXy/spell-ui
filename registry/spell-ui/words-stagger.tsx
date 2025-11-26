@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, Transition, useInView } from "motion/react";
+import React from "react";
+import { motion, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface WordsStaggerProps {
@@ -13,6 +13,7 @@ interface WordsStaggerProps {
   onStart?: () => void;
   onComplete?: () => void;
   inView?: boolean;
+  once?: boolean;
 }
 
 export function WordsStagger({
@@ -24,10 +25,8 @@ export function WordsStagger({
   onStart,
   onComplete,
   inView = false,
+  once = true,
 }: WordsStaggerProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const shouldAnimate = inView ? isInView : autoStart;
   const text = React.Children.toArray(children)
     .filter((child) => typeof child === "string")
     .join("");
@@ -65,11 +64,12 @@ export function WordsStagger({
 
   return (
     <motion.div
-      ref={ref}
       className={cn("flex flex-wrap", className)}
       variants={containerVariants}
       initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
+      whileInView={inView ? "visible" : undefined}
+      animate={inView ? undefined : autoStart ? "visible" : "hidden"}
+      viewport={{ once }}
       onAnimationStart={onStart}
       onAnimationComplete={onComplete}
     >

@@ -8,6 +8,7 @@ import { Separator } from "./ui/separator";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { SiX } from "@icons-pack/react-simple-icons";
+import MenuLeft from "./icons/menu-left";
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = React.useState<string | null>(null);
@@ -74,8 +75,8 @@ export function DocsTableOfContents({
         className,
       )}
     >
-      <p className="text-primary bg-background sticky top-0 h-6 text-[0.85rem] flex gap-1.5 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 items-center">
-        <ListMinus />
+      <p className="text-primary bg-background sticky top-0 h-6 mb-2 text-[0.85rem] flex gap-1.5 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 items-center">
+        <MenuLeft />
         On This Page
       </p>
       {toc.map((item) => (

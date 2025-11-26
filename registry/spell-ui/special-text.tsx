@@ -8,6 +8,7 @@ interface SpecialTextProps {
   speed?: number;
   className?: string;
   inView?: boolean;
+  once?: boolean;
 }
 
 const RANDOM_CHARS = "_!X$0-+*#";
@@ -25,10 +26,12 @@ export function SpecialText({
   speed = 20,
   className = "",
   inView = false,
+  once = true,
 }: SpecialTextProps) {
   const containerRef = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once, margin: "-100px" });
   const shouldAnimate = inView ? isInView : true;
+  const [hasStarted, setHasStarted] = useState(!inView);
   const text = children;
   const [displayText, setDisplayText] = useState<string>(
     " ".repeat(text.length),
@@ -97,8 +100,16 @@ export function SpecialText({
   };
 
   useEffect(() => {
-    if (!shouldAnimate) {
-      setDisplayText(text);
+    if (shouldAnimate && !hasStarted) {
+      setHasStarted(true);
+      setDisplayText(" ".repeat(text.length));
+      setCurrentPhase("phase1");
+      setAnimationStep(0);
+    }
+  }, [shouldAnimate, hasStarted, text.length]);
+
+  useEffect(() => {
+    if (!hasStarted) {
       return;
     }
 
@@ -119,19 +130,21 @@ export function SpecialText({
         clearInterval(intervalRef.current);
       }
     };
-  }, [currentPhase, animationStep, text, speed, shouldAnimate]);
+  }, [currentPhase, animationStep, text, speed, hasStarted]);
 
   useEffect(() => {
-    setDisplayText(" ".repeat(text.length));
-    setCurrentPhase("phase1");
-    setAnimationStep(0);
+    if (hasStarted) {
+      setDisplayText(" ".repeat(text.length));
+      setCurrentPhase("phase1");
+      setAnimationStep(0);
+    }
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [text]);
+  }, [text, hasStarted]);
 
   return (
     <span

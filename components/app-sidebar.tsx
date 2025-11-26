@@ -2,11 +2,9 @@
 
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -15,9 +13,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { DISCORD_URL, GITHUB_URL, X_URL } from "@/lib/constants";
 import { DocSchema } from "@/lib/types";
-import { SiDiscord, SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -29,15 +25,21 @@ export function AppSidebar({
 }) {
   const pathname = usePathname();
   const { toggleSidebar, isMobile } = useSidebar();
-  //   const { theme, setTheme } = useTheme();
   const data = {
     navMain: docSchema,
   };
 
   return (
-    <Sidebar className="mt-18" {...props}>
+    <Sidebar className="mt-14" {...props}>
       {/* mt-16 > for header height */}
-      <SidebarContent>
+      <SidebarContent
+        className="max-h-[calc(100vh-100px)] overflow-y-auto"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.2) 1rem, black 2rem, black calc(100% - 2rem), rgba(0,0,0,0.2) calc(100% - 1rem), transparent 100%)",
+        }}
+      >
+        <div className="h-4 shrink-0" />
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
@@ -64,29 +66,6 @@ export function AppSidebar({
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarFooter>
-        <div className="flex items-center gap-2 px-2 py-2">
-          <span className="flex-1"></span>
-          <Button variant="ghost" size="icon" className="size-8" asChild>
-            <Link href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-              <SiGithub />
-              <span className="sr-only">Open Github Repository</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" className="size-8" asChild>
-            <Link href={X_URL} target="_blank" rel="noopener noreferrer">
-              <SiX />
-              <span className="sr-only">Open X</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" className="size-8" asChild>
-            <Link href={DISCORD_URL} target="_blank" rel="noopener noreferrer">
-              <SiDiscord />
-              <span className="sr-only">Open Discord</span>
-            </Link>
-          </Button>
-        </div>
-      </SidebarFooter>
     </Sidebar>
   );
 }

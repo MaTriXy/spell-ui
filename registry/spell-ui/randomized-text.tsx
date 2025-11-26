@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
-import { useMemo, useRef } from "react";
+import { motion } from "motion/react";
+import { useMemo } from "react";
 
 type SplitType = "words" | "chars";
 
@@ -11,6 +11,7 @@ interface RandomizedTextProps {
   split?: SplitType;
   delay?: number;
   inView?: boolean;
+  once?: boolean;
 }
 
 export function RandomizedText({
@@ -19,10 +20,8 @@ export function RandomizedText({
   split = "words",
   delay = 0.2,
   inView = false,
+  once = true,
 }: RandomizedTextProps) {
-  const ref = useRef(null);
-  const viewportInView = useInView(ref, { once: true, margin: "-100px" });
-  const shouldAnimate = inView ? viewportInView : true;
 
   const expoOut = (t: number): number => {
     return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
@@ -47,18 +46,25 @@ export function RandomizedText({
     );
   }, [elements.length, delay]);
 
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
-    <span
-      ref={ref}
+    <motion.span
       className={className}
       aria-label={children}
       style={{ display: "inline-block", wordBreak: "break-word" }}
+      initial="hidden"
+      whileInView={inView ? "visible" : undefined}
+      animate={inView ? undefined : "visible"}
+      viewport={{ once }}
     >
       {elements.map((element, i) => (
         <motion.span
           key={element.key}
-          initial={{ opacity: 0 }}
-          animate={shouldAnimate ? { opacity: 1 } : { opacity: 0 }}
+          variants={variants}
           transition={{
             duration: 1.2,
             delay: randomizedDelays[i],
@@ -70,6 +76,6 @@ export function RandomizedText({
           {element.content}
         </motion.span>
       ))}
-    </span>
+    </motion.span>
   );
 }

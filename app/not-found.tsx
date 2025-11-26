@@ -46,23 +46,25 @@ export default function NotFound() {
     <div className="flex flex-col gap-6 justify-center items-center h-svh">
       <div className="flex items-start justify-center flex-col gap-8 px-6">
         <div className="flex flex-col gap-12 max-w-[400px]">
-          <div className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Error{" "}
-            <NumberFlow
-              value={firstDigit}
-              trend={-1}
-            >
-            </NumberFlow>
-            <NumberFlow
-              value={secondDigit}
-              trend={-1}
-            >
-            </NumberFlow>
-            <NumberFlow
-              value={thirdDigit}
-              trend={-1}
-            >
-            </NumberFlow>
+          <div className="text-2xl md:text-3xl font-semibold tracking-tight flex items-center gap-2">
+            Error
+            <div className="flex gap-[0.5px]">
+                <NumberFlow
+                  value={firstDigit}
+                  trend={-1}
+                >
+                </NumberFlow>
+                <NumberFlow
+                  value={secondDigit}
+                  trend={-1}
+                >
+                </NumberFlow>
+                <NumberFlow
+                  value={thirdDigit}
+                  trend={-1}
+                >
+                </NumberFlow>
+            </div>
           </div>
           <p className="font-medium font-lg text-muted-foreground">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure

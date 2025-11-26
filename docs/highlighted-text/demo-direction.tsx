@@ -2,7 +2,7 @@ import { HighlightedText } from "@/registry/spell-ui/highlighted-text";
 
 export function Demo() {
   return (
-    <div className="flex flex-col gap-6 text-xl font-semibold">
+    <div className="flex flex-col gap-6 text-xl font-semibold tracking-tight">
       <div>
         <HighlightedText from="left" delay={0} inView>
           From Left

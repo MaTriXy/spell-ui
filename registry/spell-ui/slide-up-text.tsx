@@ -1,13 +1,12 @@
 "use client";
 
-import { AnimationOptions, motion, useInView } from "motion/react";
+import { AnimationOptions, motion } from "motion/react";
 import {
   forwardRef,
   useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
-  useRef,
   useState,
 } from "react";
 
@@ -26,6 +25,7 @@ interface SlideUpTextProps {
   onStart?: () => void;
   onComplete?: () => void;
   inView?: boolean;
+  once?: boolean;
 }
 
 export interface SlideUpTextRef {
@@ -57,17 +57,15 @@ const SlideUpText = forwardRef<SlideUpTextRef, SlideUpTextProps>(
       onStart,
       onComplete,
       inView = false,
+      once = true,
       ...props
     },
     ref,
   ) => {
-    const containerRef = useRef<HTMLSpanElement>(null);
     const text = typeof children === "string"
       ? children
       : children?.toString() || "";
     const [isAnimating, setIsAnimating] = useState(false);
-    const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-    const shouldAnimate = inView ? isInView : true;
 
     const splitIntoCharacters = (text: string): string[] => {
       if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
@@ -123,10 +121,10 @@ const SlideUpText = forwardRef<SlideUpTextRef, SlideUpTextProps>(
     }));
 
     useEffect(() => {
-      if (autoStart && shouldAnimate) {
+      if (autoStart && !inView) {
         startAnimation();
       }
-    }, [autoStart, shouldAnimate, startAnimation]);
+    }, [autoStart, inView, startAnimation]);
 
     const variants = {
       hidden: { y: "100%" },
@@ -140,13 +138,22 @@ const SlideUpText = forwardRef<SlideUpTextRef, SlideUpTextProps>(
     };
 
     return (
-      <span
+      <motion.span
         className={cn(
           className,
           "flex flex-wrap whitespace-pre-wrap",
           split === "lines" && "flex-col",
         )}
-        ref={containerRef}
+        initial="hidden"
+        whileInView={inView ? "visible" : undefined}
+        animate={inView ? undefined : isAnimating ? "visible" : "hidden"}
+        viewport={{ once }}
+        onAnimationStart={() => {
+          if (inView) {
+            setIsAnimating(true);
+            onStart?.();
+          }
+        }}
         {...props}
       >
         <span className="sr-only">{text}</span>
@@ -206,7 +213,7 @@ const SlideUpText = forwardRef<SlideUpTextRef, SlideUpTextProps>(
               </span>
             );
           })}
-      </span>
+      </motion.span>
     );
   },
 );

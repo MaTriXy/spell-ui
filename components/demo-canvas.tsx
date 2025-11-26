@@ -6,6 +6,7 @@ import { RefreshCcw } from "lucide-react";
 import React from "react";
 import { Suspense } from "react";
 import { Spinner } from "@/registry/spell-ui/spinner";
+import RefreshAnticlockwise from "./icons/refresh";
 
 export function DemoCanvas({
   children,
@@ -45,7 +46,7 @@ export function DemoCanvas({
           className="cursor-pointer p-1.5 hover:bg-muted rounded-md"
           title="Refresh component"
         >
-          <RefreshCcw
+          <RefreshAnticlockwise
             className={cn(
               "h-4 w-4 transition-transform duration-500",
               isRotating && "rotate-180",

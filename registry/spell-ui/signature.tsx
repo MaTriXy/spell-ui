@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useId, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import React, { useEffect, useId, useState } from "react";
+import { motion } from "motion/react";
 import opentype from "opentype.js";
 
 export function Signature({
@@ -10,6 +10,7 @@ export function Signature({
   duration = 1.5,
   className,
   inView = false,
+  once = true,
 }: {
   text?: string;
   color?: string;
@@ -17,6 +18,7 @@ export function Signature({
   duration?: number;
   className?: string;
   inView?: boolean;
+  once?: boolean;
 }) {
   const [paths, setPaths] = useState<string[]>([]);
   const [width, setWidth] = useState<number>(300);
@@ -25,9 +27,6 @@ export function Signature({
   const topMargin = Math.max(5, (height - fontSize) / 2);
   const baseline = Math.min(height - 5, topMargin + fontSize);
   const maskId = `signature-reveal-${useId().replace(/:/g, "")}`;
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const shouldAnimate = inView ? isInView : true;
 
   useEffect(() => {
     async function load() {
@@ -78,14 +77,22 @@ export function Signature({
     load();
   }, [text, fontSize, baseline, horizontalPadding]);
 
+  const variants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: { pathLength: 1, opacity: 1 },
+  };
+
   return (
-    <svg
-      ref={ref}
+    <motion.svg
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       className={className}
+      initial="hidden"
+      whileInView={inView ? "visible" : undefined}
+      animate={inView ? undefined : "visible"}
+      viewport={{ once }}
     >
       <defs>
         <mask id={maskId} maskUnits="userSpaceOnUse">
@@ -96,10 +103,7 @@ export function Signature({
               stroke="white"
               strokeWidth={fontSize * 0.22}
               fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={shouldAnimate
-                ? { pathLength: 1, opacity: 1 }
-                : { pathLength: 0, opacity: 0 }}
+              variants={variants}
               transition={{
                 pathLength: {
                   delay: i * 0.2,
@@ -126,8 +130,7 @@ export function Signature({
           stroke={color}
           strokeWidth={2}
           fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
+          variants={variants}
           transition={{
             pathLength: {
               delay: i * 0.2,
@@ -148,6 +151,6 @@ export function Signature({
       <g mask={`url(#${maskId})`}>
         {paths.map((d, i) => <path key={i} d={d} fill={color} />)}
       </g>
-    </svg>
+    </motion.svg>
   );
 }

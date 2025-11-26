@@ -21,9 +21,9 @@ export function SearchForm({ docSchema }: { docSchema: DocSchema }) {
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "/") {
+      if (e.key === "/" && !open) {
         e.preventDefault();
-        setOpen(!open);
+        setOpen(true);
       }
     };
 
@@ -51,7 +51,7 @@ export function SearchForm({ docSchema }: { docSchema: DocSchema }) {
             Esc
           </span>
         </DialogClose>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput autoFocus placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>The search results could not be found.</CommandEmpty>
           {docSchema.map((section) => (
