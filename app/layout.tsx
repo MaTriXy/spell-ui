@@ -5,6 +5,8 @@ import {
   Geist_Mono,
   Instrument_Serif,
 } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JotaiProvider } from "@/components/providers";
@@ -57,6 +59,8 @@ export default async function RootLayout({
             {children}
           </ThemeProvider>
         </JotaiProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

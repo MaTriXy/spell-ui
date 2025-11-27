@@ -11,7 +11,7 @@ export function OpenInV0Button({ id }: { id: string }) {
     <Button
       aria-label="Open in v0"
       variant={"outline"}
-      className="h-7 gap-1 rounded-[6px] px-3 text-xs dark:bg-background bg-background"
+      className="h-7 gap-1 rounded-[6px] px-3 text-xs dark:bg-background bg-background shadow-none"
       asChild
     >
       <a
