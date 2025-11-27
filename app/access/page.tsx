@@ -57,15 +57,14 @@ export default function EarlyAccessPage() {
   }
 
   return (
-    <motion.div
-      className="min-h-screen flex items-center justify-center px-4"
-      animate={exiting ? { scale: 1.5, opacity: 0 } : { scale: 1, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-    >
-      {showSpinner ? (
-        <Spinner size="md" speed="fast" />
-      ) : (
-        <div className="w-full max-w-xs space-y-6">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      {showSpinner && <Spinner size="md" speed="fast" />}
+      {!showSpinner && (
+        <motion.div
+          className="w-full max-w-xs space-y-6"
+          animate={exiting ? { scale: 1.5, opacity: 0 } : { scale: 1, opacity: 1 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
           <div className="text-center space-y-2">
             <div
               className={cn(
@@ -118,9 +117,9 @@ export default function EarlyAccessPage() {
               {isLoading ? <Spinner size="sm" speed="fast" /> : "Submit"}
             </Button>
           </form>
-        </div>
+        </motion.div>
       )}
       <Link href="/docs/introduction" prefetch className="hidden" aria-hidden />
-    </motion.div>
+    </div>
   );
 }
