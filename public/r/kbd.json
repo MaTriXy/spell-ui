@@ -4,7 +4,9 @@
   "type": "registry:component",
   "title": "Keyboard Shortcuts",
   "description": "Display keyboard shortcuts with proper key symbols.",
-  "dependencies": [],
+  "dependencies": [
+    "react-hotkeys-hook"
+  ],
   "registryDependencies": [],
   "files": [
     {

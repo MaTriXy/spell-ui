@@ -12,7 +12,7 @@ export function CommandCopyButton({ command }: { command: string }) {
     navigator.clipboard.writeText(command);
     setTimeout(() => {
       setCopied(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (

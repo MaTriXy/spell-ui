@@ -22,7 +22,7 @@ export function CopyCodeButton() {
         setIsCopied(true);
         setTimeout(() => {
           setIsCopied(false);
-        }, 1000);
+        }, 1500);
       }}
     >
       {isCopied

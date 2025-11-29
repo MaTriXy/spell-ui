@@ -31,7 +31,7 @@ export function AppSidebar({
 
   return (
     <Sidebar className="mt-14" {...props}>
-      {/* mt-16 > for header height */}
+      {/* mt-14 > for header height */}
       <SidebarContent
         className="max-h-[calc(100vh-100px)] overflow-y-auto"
         style={{
@@ -40,24 +40,24 @@ export function AppSidebar({
         }}
       >
         <div className="h-4 shrink-0" />
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+        {data.navMain.map((group) => (
+          <SidebarGroup key={group.title}>
+            <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+                {group.items.map((navItem) => (
+                  <SidebarMenuItem key={navItem.title}>
                     <SidebarMenuButton
                       className="data-[active=true]:shadow-[0_0_0_1px_rgba(0,0,0,.08),_0px_2px_2px_rgba(0,0,0,.04)] data-[active=true]:not-dark:bg-white transition-all"
                       asChild
-                      isActive={pathname === `/docs/${item.id}`}
+                      isActive={pathname === `/docs/${navItem.id}`}
                       onClick={() => {
                         if (isMobile) {
                           toggleSidebar();
                         }
                       }}
                     >
-                      <Link href={`/docs/${item.id}`}>{item.title}</Link>
+                      <Link href={`/docs/${navItem.id}`}>{navItem.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}

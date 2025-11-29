@@ -43,8 +43,8 @@ export function Signature({
           try {
             font = await opentype.load(path);
             break;
-          } catch (e) {
-            console.log(`Failed to load font from ${path}, trying next...`);
+          } catch {
+            // Try next path
           }
         }
 
@@ -66,9 +66,7 @@ export function Signature({
 
         setPaths(newPaths);
         setWidth(x + horizontalPadding);
-      } catch (error) {
-        console.error("Failed to load font:", error);
-        // Set fallback text path if font fails to load
+      } catch {
         setPaths([]);
         setWidth(text.length * fontSize * 0.6);
       }
