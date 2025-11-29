@@ -9,6 +9,14 @@ import { join } from "path";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DocCopySection } from "@/components/doc-copy-section";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default async function DocPage({
   params,
@@ -53,6 +61,21 @@ export default async function DocPage({
         <div className="hidden xl:block" />
         <article className="max-w-4xl prose dark:prose-invert w-full">
           <header className="not-prose mb-8">
+            <Breadcrumb className="mb-2">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/docs/introduction">Docs</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/docs/introduction">Components</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{item.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <div className="flex items-start justify-between">
               <div className="space-y-2">
                 <h1 className="scroll-m-20 text-3xl font-semibold tracking-tighter">
