@@ -318,6 +318,21 @@
       "dependencies": [],
       "registryDependencies": [],
       "category": "button"
+    },
+    {
+      "name": "tweet",
+      "type": "registry:component",
+      "title": "Tweet",
+      "description": "Embed Twitter/X posts with custom styling.",
+      "files": [
+        {
+          "path": "registry/spell-ui/tweet.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": ["react-tweet"],
+      "registryDependencies": [],
+      "category": "display"
     }
   ]
 }
