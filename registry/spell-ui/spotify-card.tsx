@@ -140,7 +140,7 @@ export function SpotifyCard({ url, className }: SpotifyCardProps) {
           src={data.image}
           alt={data.title}
           className={cn(
-            "pointer-events-none relative z-[1] w-full select-none rounded-lg object-cover shadow-md transition-transform duration-300 ease-out",
+            "pointer-events-none relative z-[1] min-h-[75px] min-w-[75px] w-full select-none rounded-lg object-cover shadow-md transition-transform duration-300 ease-out",
             data.audio && "group-hover:-translate-x-0.5",
             isPlaying && "-translate-x-0.5"
           )}

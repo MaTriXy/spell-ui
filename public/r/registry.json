@@ -348,6 +348,36 @@
       "dependencies": ["@icons-pack/react-simple-icons", "spotify-url-info"],
       "registryDependencies": [],
       "category": "display"
+    },
+    {
+      "name": "light-rays",
+      "type": "registry:component",
+      "title": "Light Rays",
+      "description": "Animated light rays effect using WebGL shaders.",
+      "files": [
+        {
+          "path": "registry/spell-ui/light-rays.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": ["three"],
+      "registryDependencies": [],
+      "category": "background"
+    },
+    {
+      "name": "animated-gradient",
+      "type": "registry:component",
+      "title": "Animated Gradient",
+      "description": "Animated gradient background with presets and customizable swirl effects using WebGL.",
+      "files": [
+        {
+          "path": "registry/spell-ui/animated-gradient.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "background"
     }
   ]
 }

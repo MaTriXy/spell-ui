@@ -38,6 +38,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "jotai": "^2.15.0",
     "lucide-react": "^0.544.0",
     "mdast-util-toc": "^7.1.0",
@@ -58,7 +60,8 @@
     "remark-code-import": "^1.2.0",
     "remark-gfm": "^4.0.1",
     "spotify-url-info": "^3.2.18",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -67,6 +70,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.181.0",
     "@types/unist": "^3.0.3",
     "baseline-browser-mapping": "^2.8.32",
     "eslint": "^9",
