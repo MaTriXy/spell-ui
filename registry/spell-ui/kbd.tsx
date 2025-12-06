@@ -54,7 +54,7 @@ const keyHotkeyMap: Record<string, string> = {
   right: "right",
 };
 
-export function Kbd({ keys, className, active, listenToKeyboard = false }: KbdProps) {
+export function Kbd({ keys = [], className, active, listenToKeyboard = false }: KbdProps) {
   const [isPressed, setIsPressed] = useState(false);
 
   const getKeyDisplay = (item: KeyItem): string => {

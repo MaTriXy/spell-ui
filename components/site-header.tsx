@@ -4,7 +4,7 @@ import { DocSchema } from "@/lib/types";
 import { SearchForm } from "./command-menu";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
-import { SidebarTrigger } from "./ui/sidebar";
+// import { SidebarTrigger } from "./ui/sidebar";
 import { GithubStars } from "./github-stars";
 import Link from "next/link";
 
@@ -15,8 +15,10 @@ export default function SiteHeader({ docSchema }: { docSchema?: DocSchema }) {
       <div className="flex justify-between w-full h-14 items-center gap-4 3xl:max-w-screen-2xl px-4 mx-auto">
         <div className="flex items-center gap-6">
           <div className="flex items-center">
-            <SidebarTrigger className="md:hidden mr-1" />
-            <h1 className="font-medium" translate="no">Spell UI</h1>
+            {/* <SidebarTrigger className="md:hidden mr-1" /> */}
+            <Link href={"/"}>
+              <h1 className="font-medium" translate="no">Spell UI</h1>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center gap-4 md:gap-6 text-sm">
             <Link href="/docs/introduction" className="text-muted-foreground hover:text-foreground transition-colors">

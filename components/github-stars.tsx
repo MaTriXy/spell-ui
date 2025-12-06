@@ -38,12 +38,19 @@ export function GithubStars() {
         const response = await fetch(
           `https://api.github.com/repos/${repoPath}`,
         );
-        const data = (await response.json()) as { stargazers_count: number };
-        setStars(data.stargazers_count);
-        // Save to cookie for 1 hour
-        setCookie(COOKIE_NAME, data.stargazers_count.toString());
+        if (!response.ok) {
+          setStars(0);
+          setCookie(COOKIE_NAME, "0");
+          return;
+        }
+        const data = (await response.json()) as { stargazers_count?: number };
+        const count = data.stargazers_count ?? 0;
+        setStars(count);
+        setCookie(COOKIE_NAME, count.toString());
       } catch (error) {
         console.error("Error fetching GitHub stars:", error);
+        setStars(0);
+        setCookie(COOKIE_NAME, "0");
       }
     }
 

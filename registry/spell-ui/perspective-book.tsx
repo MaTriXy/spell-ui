@@ -27,7 +27,7 @@ export function PerspectiveBook({
 
   return (
     <div
-      className={`z-10 group [perspective:900px] w-min`}
+      className={`z-10 group [perspective:900px] w-min h-min`}
     >
       <div
         style={{

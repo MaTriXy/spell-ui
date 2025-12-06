@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   DynaPuff,
   Geist,
@@ -61,6 +62,26 @@ export default async function RootLayout({
         </JotaiProvider>
         <SpeedInsights />
         <Analytics />
+        <Script id="easter-egg" strategy="afterInteractive">
+          {`(async () => {
+  const response = await fetch('/cat.png');
+  const blob = await response.blob();
+  const toBase64 = (blob) =>
+    new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.readAsDataURL(blob);
+    });
+  const base64Image = await toBase64(blob);
+  console.log('%c ', \`
+    background-image: url('\${base64Image}');
+    padding: 12em;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  \`);
+})();`}
+        </Script>
       </body>
     </html>
   );

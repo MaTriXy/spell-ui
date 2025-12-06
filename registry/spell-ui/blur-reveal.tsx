@@ -15,6 +15,7 @@ export interface BlurRevealProps {
   style?: React.CSSProperties
   inView?: boolean
   once?: boolean
+  letterSpacing?: string | number
 }
 
 export function BlurReveal({
@@ -30,6 +31,7 @@ export function BlurReveal({
   style,
   inView = false,
   once = true,
+  letterSpacing,
 }: BlurRevealProps) {
   const MotionTag = motion[as as keyof typeof motion] as typeof motion.div
 
@@ -83,15 +85,28 @@ export function BlurReveal({
         >
           <span className="sr-only">{children}</span>
           {children &&
-            children.split("").map((char, index) => (
-              <motion.span
-                key={`char-${index}`}
-                aria-hidden="true"
-                variants={itemVariants}
-                className="inline-block whitespace-pre"
-              >
-                {char}
-              </motion.span>
+            children.split(" ").map((word, wordIndex, wordsArray) => (
+              <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap" aria-hidden="true">
+                {word.split("").map((char, charIndex) => (
+                  <motion.span
+                    key={`char-${wordIndex}-${charIndex}`}
+                    variants={itemVariants}
+                    className="inline-block"
+                    style={letterSpacing ? { marginRight: letterSpacing } : undefined}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                {wordIndex < wordsArray.length - 1 && (
+                  <motion.span
+                    key={`space-${wordIndex}`}
+                    variants={itemVariants}
+                    className="inline-block"
+                  >
+                    &nbsp;
+                  </motion.span>
+                )}
+              </span>
             ))}
         </MotionTag>
       )}
