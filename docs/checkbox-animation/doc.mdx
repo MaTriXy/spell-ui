@@ -1,0 +1,57 @@
+import { Demo } from './demo'
+
+<DemoCanvas>
+  <DemoPreview>
+    <Demo />
+  </DemoPreview>
+  <DemoCode>
+    ```tsx file=./demo.tsx
+    ```
+  </DemoCode>
+</DemoCanvas>
+
+## Installation
+
+<InstallationTabs item="checkbox-animation">
+```tsx file=../../registry/spell-ui/checkbox-animation.tsx
+```
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { CheckboxAnimation } from "@/components/checkbox-animation";
+```
+```tsx
+<CheckboxAnimation title="Task to complete" />
+<CheckboxAnimation title="Already done" defaultChecked />
+```
+
+## Props
+
+<PropsTable
+  data={[
+    {
+      name: "title",
+      type: "string",
+      default: '"Implement Checkbox"',
+      nameDetails: "The label text for the checkbox"
+    },
+    {
+      name: "defaultChecked",
+      type: "boolean",
+      default: "false",
+      nameDetails: "Initial checked state"
+    },
+    {
+      name: "onCheckedChange",
+      type: "(checked: boolean) => void",
+      nameDetails: "Callback when checked state changes"
+    },
+    {
+      name: "className",
+      type: "string",
+      nameDetails: "Additional CSS classes"
+    }
+  ]}
+/>
