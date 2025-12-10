@@ -380,13 +380,13 @@
       "category": "background"
     },
     {
-      "name": "checkbox-animation",
+      "name": "animated-checkbox",
       "type": "registry:component",
-      "title": "Checkbox Animation",
+      "title": "Animated Checkbox",
       "description": "Animated checkbox with spring transitions and strike-through text effect.",
       "files": [
         {
-          "path": "registry/spell-ui/checkbox-animation.tsx",
+          "path": "registry/spell-ui/animated-checkbox.tsx",
           "type": "registry:component"
         }
       ],

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-interface CheckboxAnimationProps {
+interface AnimatedCheckboxProps {
   title?: string;
   defaultChecked?: boolean;
   className?: string;
@@ -17,12 +17,12 @@ const springTransition = {
   bounce: 0.2,
 };
 
-export function CheckboxAnimation({
+export function AnimatedCheckbox({
   title = "Implement Checkbox",
   defaultChecked = false,
   className,
   onCheckedChange,
-}: CheckboxAnimationProps) {
+}: AnimatedCheckboxProps) {
   const [checked, setChecked] = useState(defaultChecked);
 
   const handleClick = () => {
