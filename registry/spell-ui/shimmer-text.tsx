@@ -82,6 +82,9 @@ export function ShimmerText({
             backgroundRepeat: "no-repeat",
             backgroundSize: "50% 200%",
           } as React.CSSProperties}
+          initial={{
+            backgroundPositionX: "250%",
+          }}
           animate={{
             backgroundPositionX: ["-100%", "250%"],
           }}

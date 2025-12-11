@@ -285,7 +285,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": ["motion", "opentype.js"],
+      "dependencies": ["motion", "opentype.js", "@types/opentype.js"],
       "registryDependencies": [],
       "category": "animation"
     },

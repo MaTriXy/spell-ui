@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { motion } from "motion/react";
 import opentype from "opentype.js";
 
@@ -82,6 +82,7 @@ export function Signature({
 
   return (
     <motion.svg
+      key={paths.length}
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}

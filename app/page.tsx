@@ -1,4 +1,4 @@
-import { Hero1 } from "@/components/hero-1";
+import { Hero } from "@/components/hero";
 import SiteHeader from "@/components/site-header";
 import { getDocSchema } from "@/lib/doc";
 
@@ -6,9 +6,9 @@ const docSchema = await getDocSchema();
 
 export default function Home() {
   return (
-    <div className="flex relative h-svh pt-14">
+    <div className="flex relative min-h-dvh pt-14">
       <SiteHeader docSchema={docSchema} />
-      <Hero1 />
+      <Hero />
     </div>
   );
 }

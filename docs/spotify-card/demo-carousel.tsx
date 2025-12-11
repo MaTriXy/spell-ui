@@ -17,7 +17,7 @@ const tracks = [
 export default function SpotifyCardCarouselDemo() {
   return (
     <Carousel
-      className="w-full max-w-[350px]"
+      className="w-full max-w-[330px] max-h-[100px]"
       plugins={[
         Autoplay({
           delay: 2000,

@@ -72,7 +72,7 @@ export default function NotFound() {
             voluptatum quae.
           </p>
         </div>
-        <RichButton className="rounded-full pl-3 gap-1.5" asChild>
+        <RichButton className="rounded-full pl-3 gap-1.5 active:scale-[0.97] will-change-transform ease-out duration-300" asChild>
         <Link href={"/"}>
             <ArrowLeft />Go Back
           </Link>

@@ -20,7 +20,7 @@ interface SpotifyCardProps {
 const SpotifyCardSkeleton = ({ className }: { className?: string }) => (
   <div
     className={cn(
-      "relative flex h-full w-full items-stretch justify-center overflow-hidden rounded-2xl border border-border bg-muted/50 p-3",
+      "relative flex max-h-[100px] h-full w-full items-stretch justify-center overflow-hidden rounded-2xl border border-border bg-muted/50 p-3",
       className
     )}
   >
@@ -115,7 +115,7 @@ export function SpotifyCard({ url, className }: SpotifyCardProps) {
   return (
     <div
       className={cn(
-        "relative flex h-full w-full items-stretch justify-center overflow-hidden rounded-2xl border border-border p-3",
+        "relative flex max-h-[100px] h-full w-full items-stretch justify-center overflow-hidden rounded-2xl border border-border p-3",
         className
       )}
     >
