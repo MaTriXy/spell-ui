@@ -11,7 +11,7 @@ export function Demo() {
         className="w-72 p-0 h-10 text-base border-b bg-background font-medium placeholder:font-medium outline-none"
       />
       <ExplodingInput
-      className="z-50"
+        className="z-50"
         content={[
           <span key="1" className="text-4xl">🤩</span>,
           <span key="2" className="text-4xl">👾</span>,
