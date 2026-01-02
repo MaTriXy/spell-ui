@@ -20,8 +20,8 @@ export function LogosCarousel({
   count,
   className,
   gap = 10,
-  duration = 500,
-  interval = 1500,
+  duration = 600,
+  interval = 3000,
   initialDelay = 500,
 }: LogosCarouselProps) {
   const [index, setIndex] = React.useState(0);
