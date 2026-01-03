@@ -176,6 +176,10 @@ summary {
   pointer-events: none;
 }
 
+.prose h1 {
+  color: #000;
+}
+
 .prose h2:has(.subheading-anchor),
 .prose h3:has(.subheading-anchor),
 .prose h4:has(.subheading-anchor) {
