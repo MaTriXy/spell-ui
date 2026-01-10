@@ -4,18 +4,17 @@ import { DocSchema } from "@/lib/types";
 import { SearchForm } from "./command-menu";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
-// import { SidebarTrigger } from "./ui/sidebar";
 import { GithubStars } from "./github-stars";
+import { MobileNav } from "./mobile-nav";
 import Link from "next/link";
-
 export default function SiteHeader({ docSchema }: { docSchema?: DocSchema }) {
   const { theme, setTheme } = useTheme();
   return (
     <header className="fixed bg-background top-0 left-0 right-0 z-50 w-full border-b border-border">
       <div className="flex justify-between w-full h-14 items-center gap-4 3xl:max-w-screen-2xl px-4 mx-auto">
         <div className="flex items-center gap-6">
-          <div className="flex items-center">
-            {/* <span className="size-[18px] rounded-none bg-purple-600 block transform-none mr-1.5"></span> */} {/* logo?? */}
+          <div className="flex items-center gap-2">
+            {docSchema && <MobileNav docSchema={docSchema} className="md:hidden" />}
             <Link href={"/"}>
               <h1 className="font-medium" translate="no">Spell UI</h1>
             </Link>
