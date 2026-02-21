@@ -43,6 +43,7 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith("/access") ||
     pathname.startsWith("/api/access") ||
+    pathname.startsWith("/og") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon") ||
     (pathname.includes(".") && !pathname.endsWith(".md"))
