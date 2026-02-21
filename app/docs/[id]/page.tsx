@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DocCopySection } from "@/components/doc-copy-section";
 import { siteConfig } from "@/lib/config";
+import { absoluteUrl, buildOgUrl, constructMetadata } from "@/lib/utils";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -29,16 +30,29 @@ export async function generateMetadata({
   const item = await getDoc(id);
 
   if (!item) {
-    return {
-      title: siteConfig.name,
-      description: siteConfig.description,
-    };
+    return constructMetadata();
   }
 
-  return {
-    title: item.title,
+  const image = buildOgUrl({ title: item.title, description: item.description });
+
+  return constructMetadata({
+    title: `${item.title} | ${siteConfig.name}`,
     description: item.description,
-  };
+    image,
+    openGraph: {
+      title: item.title,
+      description: item.description,
+      type: "article",
+      url: absoluteUrl(`/docs/${id}`),
+      images: [{ url: image, width: 1200, height: 628 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.title,
+      description: item.description,
+      images: [image],
+    },
+  });
 }
 
 export default async function DocPage({

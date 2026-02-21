@@ -3,10 +3,10 @@ export const siteConfig = {
   url: "https://spell.sh",
   ogImage: "https://spell.sh/og",
   description:
-    "A refined collection of high-end UI components crafted for React and Tailwind CSS.",
+    "Beautiful, sophisticated UI components designed for modern React and Tailwind CSS applications.",
   links: {
     tom: "https://x.com/tomm_ui",
-    x: "https://x.com/spell_ui",
+    x: "https://x.com/intent/follow?screen_name=tomm_ui",
     discord: "https://discord.gg/spellui",
     github: "https://github.com/xxtomm/spell-ui",
     // instagram: "https://instagram.com/spellui/",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { constructMetadata } from "@/lib/utils";
 import Script from "next/script";
 import {
   DynaPuff,
@@ -33,11 +34,9 @@ const dynaPuff = DynaPuff({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = constructMetadata({
   title: "Spell UI",
-  description:
-    "Beautiful, sophisticated UI components designed for modern React and Tailwind CSS applications.",
-};
+});
 
 export default async function RootLayout({
   children,
