@@ -77,22 +77,21 @@ export function SearchForm({ docSchema }: { docSchema: DocSchema }) {
       if (item.isComponent) {
         const componentName = item.url.split("/").pop();
         setSelectedType("component");
-        const registryUrl = `https://spell.sh/r/${componentName}.json`;
+        const componentArg = `@spell/${componentName}`;
         let cmd: string;
         switch (packageManager) {
           case "pnpm":
-            cmd = `pnpm dlx shadcn@latest add "${registryUrl}"`;
+            cmd = `pnpm dlx shadcn@latest add ${componentArg}`;
             break;
           case "bun":
-            cmd = `bunx --bun shadcn@latest add "${registryUrl}"`;
+            cmd = `bunx --bun shadcn@latest add ${componentArg}`;
             break;
           case "yarn":
-            cmd = `yarn dlx shadcn@latest add "${registryUrl}"`;
+            cmd = `yarn dlx shadcn@latest add ${componentArg}`;
             break;
           default:
-            cmd = `npx shadcn@latest add "${registryUrl}"`;
+            cmd = `npx shadcn@latest add ${componentArg}`;
         }
-
         setCopyPayload(cmd);
       } else {
         setSelectedType("page");
@@ -188,14 +187,14 @@ export function SearchForm({ docSchema }: { docSchema: DocSchema }) {
                 </kbd>
               </div>
               {copyPayload ? (
-                <div className="flex min-w-0 items-center gap-1">
+                <div className="flex min-w-0 items-center gap-2">
                   <span className="truncate font-mono">
                     {copyPayload}
                   </span>
                   <div className="flex items-center gap-1">
                     <span className="inline-flex items-center shadow-[0_0_0_1px_var(--border)] font-normal min-h-4 px-1 rounded text-[10px]">
                       {isMac ? "⌘" : "Ctrl"}
-                      <span className="ml-0.5">C</span>
+                      <span>C</span>
                     </span>
                   </div>
                 </div>
