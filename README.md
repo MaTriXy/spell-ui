@@ -25,6 +25,11 @@ Visit our [contributing guide](https://github.com/xxtomm/spell-ui/blob/main/CONT
 
 Have questions, comments or feedback? [Join our Discord](https://discord.gg/CxzqwQ2EAa).
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=xxtomm/spell-ui&type=Date)](https://www.star-history.com/#xxtomm/spell-ui&Date)
+
+
 ## License
 
 Licensed under the [MIT license](https://github.com/xxtomm/spell-ui/blob/main/LICENSE).
