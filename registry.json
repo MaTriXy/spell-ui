@@ -438,6 +438,21 @@
       "dependencies": [],
       "registryDependencies": [],
       "category": "display"
+    },
+    {
+      "name": "qr-code",
+      "type": "registry:component",
+      "title": "QR Code",
+      "description": "QR code generator with rounded finder patterns and dot-style data modules.",
+      "files": [
+        {
+          "path": "registry/spell-ui/qr-code.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": ["qrcode"],
+      "registryDependencies": [],
+      "category": "display"
     }
   ]
 }

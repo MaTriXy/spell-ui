@@ -1,0 +1,84 @@
+import { Demo } from './demo'
+import { Demo as DemoVariants } from './demo-variants'
+
+<DemoCanvas>
+  <DemoPreview>
+    <Demo />
+  </DemoPreview>
+  <DemoCode>
+    ```tsx file=./demo.tsx
+    ```
+  </DemoCode>
+</DemoCanvas>
+
+## Installation
+
+<InstallationTabs item="qr-code">
+```tsx file=../../registry/spell-ui/qr-code.tsx
+```
+</InstallationTabs>
+
+## Examples
+
+### Colors
+
+<DemoCanvas>
+  <DemoPreview>
+    <DemoVariants />
+  </DemoPreview>
+  <DemoCode>
+    ```tsx file=./demo-variants.tsx
+    ```
+  </DemoCode>
+</DemoCanvas>
+
+## Usage
+
+```tsx
+import { QRCode } from "@/components/qr-code";
+```
+```tsx
+<QRCode value="https://example.com" />
+<QRCode value="https://example.com" size={140} />
+```
+
+## Props
+
+<PropsTable
+  data={[
+    {
+      name: "value",
+      type: "string",
+      nameDetails: "The text or URL to encode in the QR code"
+    },
+    {
+      name: "size",
+      type: "number",
+      default: "268",
+      typeDetails: "QR code size in pixels"
+    },
+    {
+      name: "fgColor",
+      type: "string",
+      default: "var(--foreground)",
+      typeDetails: "Foreground (dark) color. Adapts to theme in dark mode."
+    },
+    {
+      name: "bgColor",
+      type: "string",
+      default: "var(--background)",
+      typeDetails: "Background (light) color. Adapts to theme in dark mode."
+    },
+    {
+      name: "errorCorrectionLevel",
+      type: '"L" | "M" | "Q" | "H"',
+      default: "M",
+      typeDetails: "Error correction level. L: 7%, M: 15%, Q: 25%, H: 30%"
+    },
+    {
+      name: "className",
+      type: "string",
+      nameDetails: "Additional CSS classes"
+    }
+  ]}
+/>
